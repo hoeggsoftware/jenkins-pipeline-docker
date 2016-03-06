@@ -1,6 +1,7 @@
 # Containerized build environments with the Jenkins Pipeline plugin and Docker.
 
-This project demonstrates how one could use the [Jenkins Pipeline/Workflow plugin](https://github.com/jenkinsci/workflow-plugin) and Docker to create containerized build environments. 
+This project demonstrates how one could use the [Jenkins Pipeline/Workflow plugin](https://github.com/jenkinsci/workflow-plugin) and Docker to create containerized build environments. Please note that NOT everything in this project works as desired. It's an absolute work-in-progress.  
+
 
 ## Starting the Jenkins Master
 The Jenkins master is not set up to save state. To start it, do the following:
@@ -27,7 +28,7 @@ Execute the following:
 
 	cd jenkins-jnlp-agent
 	export JENKINS_SECRET="the-value-you-copied-earlier" | docker-compose up
-	
+
 You should now see the agent on the main screen.
 
 ## Adding Jobs
@@ -38,3 +39,4 @@ The Jobs folder contains 3 Groovy scripts that define different pipelines. These
   * `jobs/docker-inside.groovy`: This is my ideal state but this doesn't work at all and this will hang indefinately due to the fact that the build container can't see the volume. This pipeline does work if the agent is not in a container.
   * `jobs/docker-in-shell.groovy`: This pipeline demonstrates that it is possible to get `docker.inside()` to work if using a data volume container. The pipeline partially works and it can see code, but the build fails on updating the git submodule.
 
+  I didn't have a great way providing a Jenkins master with pre-configured jobs. Thus, you'll have to create each job manually. 
