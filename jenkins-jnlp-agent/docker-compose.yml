@@ -1,0 +1,13 @@
+jenkins-agent:
+  build: .
+  command: -url http://192.168.99.100:8080/ ${JENKINS_SECRET} test-agent
+  environment:
+    JAVA_OPTS: "-Djava.awt.headless=true"
+  volumes:
+    - /usr/local/bin/docker:/bin/docker
+    - /var/run/docker.sock:/var/run/docker.sock
+  volumes_from:
+    - jenkins-data
+
+jenkins-data:
+    build: ../jenkins-data/.
