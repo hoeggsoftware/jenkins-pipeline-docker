@@ -1,4 +1,7 @@
 # Containerized build environments with the Jenkins Pipeline plugin and Docker.
+This code is related to this blog post:
+
+http://damnhandy.com/2016/03/06/creating-containerized-build-environments-with-the-jenkins-pipeline-plugin-and-docker-well-almost/
 
 This project demonstrates how one could use the [Jenkins Pipeline/Workflow plugin](https://github.com/jenkinsci/workflow-plugin) and Docker to create containerized build environments. Please note that NOT everything in this project works as desired. It's an absolute work-in-progress.  
 
