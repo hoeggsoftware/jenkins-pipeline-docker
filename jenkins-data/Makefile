@@ -1,6 +1,6 @@
 
 
 build:
-	docker build -t damnhandy/jenkins-data .
+	docker build -t hoeggsoftware/jenkins-data .
 create:
-	docker create --name=jenkins-data damnhandy/jenkins-data
+	docker create --name=jenkins-data hoeggsoftware/jenkins-data

@@ -1,6 +1,6 @@
 jenkins-agent:
   build: .
-  command: -url http://192.168.99.100:8080/ ${JENKINS_SECRET} test-agent
+  command: -url http://${GITHUB_USER}:${GITHUB_TOKEN}@${JENKINS_SERVER_URL}/ ${JENKINS_SECRET} docker
   environment:
     JAVA_OPTS: "-Djava.awt.headless=true"
   volumes:

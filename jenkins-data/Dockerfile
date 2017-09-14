@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Ryan J. McDonough <ryan@damnhandy.com>
+MAINTAINER Clayton Flesher <clayton@hoegg.software>
 
 # Create the jenkins user
 RUN useradd -d "/var/jenkins_home" -u 1000 -m -s /bin/bash jenkins

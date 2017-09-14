@@ -21,14 +21,18 @@
 #  THE SOFTWARE.
 
 FROM java:8-jdk
-MAINTAINER Nicolas De Loof <nicolas.deloof@gmail.com>
+MAINTAINER Clayton Flesher <clayton@hoegg.software>
+
+ARG GITHUB_USER
+ARG GITHUB_TOKEN
+ARG JENKINS_SERVER_URL
 
 ENV HOME /var/jenkins_home
 RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 # Add Jenkins to the 'users' group so that it can have access to docker.
 RUN usermod -G users jenkins
 
-RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.53/remoting-2.53.jar \
+RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://${GITHUB_USER}:${GITHUB_TOKEN}@${JENKINS_SERVER_URL}/jnlpJars/slave.jar \
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
 
