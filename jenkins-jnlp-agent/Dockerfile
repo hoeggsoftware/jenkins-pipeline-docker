@@ -26,6 +26,7 @@ MAINTAINER Clayton Flesher <clayton@hoegg.software>
 ARG GITHUB_USER
 ARG GITHUB_TOKEN
 ARG JENKINS_SERVER_URL
+ARG JENKINS_SERVER_PORT
 
 ENV HOME /var/jenkins_home
 RUN useradd -c "Jenkins user" -d $HOME -m jenkins
