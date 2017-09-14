@@ -29,9 +29,11 @@ ARG JENKINS_SERVER_URL
 ARG JENKINS_SERVER_PORT
 
 ENV HOME /var/jenkins_home
+RUN groupadd -g 999 docker
 RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 # Add Jenkins to the 'users' group so that it can have access to docker.
-RUN usermod -G users jenkins
+RUN usermod -aG users jenkins
+RUN usermod -aG docker jenkins
 
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar \
   http://${GITHUB_USER}:${GITHUB_TOKEN}@${JENKINS_SERVER_URL}:${JENKINS_SERVER_PORT}/jnlpJars/slave.jar \
