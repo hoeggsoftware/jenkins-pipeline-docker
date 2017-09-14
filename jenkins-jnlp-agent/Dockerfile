@@ -32,7 +32,8 @@ RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 # Add Jenkins to the 'users' group so that it can have access to docker.
 RUN usermod -G users jenkins
 
-RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://${GITHUB_USER}:${GITHUB_TOKEN}@${JENKINS_SERVER_URL}/jnlpJars/slave.jar \
+RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar \
+  http://${GITHUB_USER}:${GITHUB_TOKEN}@${JENKINS_SERVER_URL}:${JENKINS_SERVER_PORT}/jnlpJars/slave.jar \
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
 
